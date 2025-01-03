@@ -4,13 +4,12 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { tap } from "rxjs/operators";
 import { Router } from "@angular/router";
-import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
     providedIn: "root",
 })
 export class AuthService {
-    private apiUrl = `https://cultivua-laravel-production.up.railway.app/api`;
+    private apiUrl = `${environment.apiUrl}`;
     private tokenKey = "auth_token";
 
     private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
@@ -40,15 +39,11 @@ export class AuthService {
             })
         );
     }
-
+    
     loginAdmin(credentials: any): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/admin/login`, credentials).pipe(
             tap((response) => {
                 this.setToken(response.token);
-                const role = this.getRoleFromToken(response.token);
-                if (role !== 'admin') {
-                    throw new Error('Unauthorized role');
-                }
                 sessionStorage.setItem("admin_id", response.id);
                 sessionStorage.setItem("admin_email", response.email);
                 sessionStorage.setItem("admin_name", response.username);
@@ -57,17 +52,7 @@ export class AuthService {
                 this.isAuthenticatedSubject.next(true);
             })
         );
-    }
-
-    getRoleFromToken(token: string): string | null {
-        try {
-            const decoded: any = jwtDecode(token); // Decodifica o token JWT
-            return decoded.role || null; // Retorna a role ou null caso não exista
-        } catch (error) {
-            console.error("Erro ao decodificar o token:", error);
-            return null;
-        }
-    }
+    }    
 
     // Armazenar URL de redirecionamento
     setRedirectUrl(url: string) {
