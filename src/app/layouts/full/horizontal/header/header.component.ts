@@ -181,7 +181,7 @@ export class AppHorizontalHeaderComponent {
     }
 
     checkout(): void {
-        window.location.href = 'http://localhost:4200/loja-online/checkout';
+        window.location.href = 'https://cultivua.netlify.app/loja-online/checkout';
     }
 
     fetchNotifications(): void {

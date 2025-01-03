@@ -55,6 +55,12 @@ export const routes: Routes = [
                 data: { title: "Landing Page" },
             },
             {
+                path: "",
+                redirectTo: "/landingpage",
+                pathMatch: "full",
+                data: { title: "Landing Page" },
+            },
+            {
                 path: "starter",
                 loadChildren: () =>
                     import("./pages/pages.routes").then((m) => m.PagesRoutes),
