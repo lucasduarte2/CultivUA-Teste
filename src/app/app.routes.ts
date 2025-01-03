@@ -42,6 +42,7 @@ import { CardDetailsComponent } from "./components/loja-online/card-details/card
 import { AuthenticationAdminComponent } from "./pages/authentication-admin/authentication-admin.component";
 import { AdminGuard } from "./guards/admin.guard";
 import { NgModule } from "@angular/core";
+import { PageUnauthorizedComponent } from "./pages/403/403.component";
 
 
 export const routes: Routes = [
@@ -497,6 +498,19 @@ export const routes: Routes = [
                 component: PageNotFoundComponent,
                 data: {
                     title: "404",
+                },
+            },
+        ],
+    },
+    {
+        path: "",
+        component: BlankComponent,
+        children: [
+            {
+                path: "403",
+                component: PageUnauthorizedComponent,
+                data: {
+                    title: "403",
                 },
             },
         ],
