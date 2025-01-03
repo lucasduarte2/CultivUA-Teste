@@ -22,8 +22,8 @@
                             "bezier-easing",
                             "ng-apexcharts"
                         ],
-                        "outputPath": "public/CultivUA",
-                        "baseHref": "/CultivUA/",
+                        "outputPath": "public",
+                        "baseHref": "/",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": ["zone.js"],
