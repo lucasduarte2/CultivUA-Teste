@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class KitDetailsService {
-  private apiUrl = 'http://127.0.0.1:8000/api/kit'; // URL da sua API (ajuste conforme necessário)
+  private apiUrl = 'cultivua-laravel-production.up.railway.app/api/kit'; // URL da sua API (ajuste conforme necessário)
 
   constructor(private http: HttpClient) {}
 
